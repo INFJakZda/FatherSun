@@ -14,8 +14,7 @@ int64_t fibonacci(int64_t n) {
 	int64_t  f1 = 1;
 	int64_t  f2 = 0;
 	using namespace std::chrono_literals;
-	for (int i = 0; i < n; i++) {
-		
+	for (int i = 0; i < n; i++) {		
 		f2 = f1 + f0;
 		f0 = f1;
 		f1 = f2;
@@ -33,21 +32,18 @@ int main() {
 
 	logger->set_level(spdlog::level::debug);
 	logger->info("Dzis Tech Day");
-	logger->debug("Mówimy o C++");
+	logger->debug("MÃ³wimy o C++");
 	logger->error("Mielismy opoznienie");
 
 	logger->info("{}", fibonacci(3));
 
 	std::map<int, int64_t> fibonaci_numbers;
 
-
 	crow::SimpleApp app;
-
 
 	CROW_ROUTE(app, "/fibo_numbers/").methods("POST"_method)(
 		[&logger, &fibonaci_numbers](const crow::request& req) {
-		if (req.method == "POST"_method) {
-			
+		if (req.method == "POST"_method) {			
 			logger->debug("Cialo wiadomosci {}", req.body);
 			int n = stoi(req.body);
 			//req.body
